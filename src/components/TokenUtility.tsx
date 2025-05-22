@@ -2,8 +2,6 @@ import React from 'react';
 import { Icon } from "@/components/ui/evervault-card";
 import { FlickeringGrid} from "@/components/ui/flickering-grid";
 import { Ripple } from "@/components/ui/ripple-circle";
-import Image from "next/image";
-
 
 interface AGNUtilityProps {
     className?: string;

@@ -1,7 +1,6 @@
 "use client";
 
 import React from 'react';
-import { motion } from 'framer-motion';
 import { Icon } from "@/components/ui/evervault-card";
 import { StringDemo } from "./ui/stringDemo";
 

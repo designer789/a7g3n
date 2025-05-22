@@ -1,15 +1,16 @@
 "use client"
 import { useState, useEffect } from "react"
-import { motion } from "motion/react"
+import { motion } from "framer-motion" // Fixed import from "motion/react" to "framer-motion"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
-export const StringDemo = ({
-  text,
-  className,
-}: {
-  text?: string
+
+interface StringDemoProps {
   className?: string
-}) => {
+}
+
+export const StringDemo = ({
+  className,
+}: StringDemoProps) => {
   const [randomString, setRandomString] = useState("")
   const [isHovering, setIsHovering] = useState(false)
 
@@ -34,17 +35,17 @@ export const StringDemo = ({
   }
 
   return (
-    <div className={cn(" bg-transparent flex items-center justify-center w-full h-full relative", className)}>
+    <div className={cn("bg-transparent flex items-center justify-center w-full h-full relative", className)}>
       <div
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onMouseMove={handleMouseMove}
-        className="group/card  w-full relative overflow-hidden bg-transparent flex items-center justify-center h-full"
+        className="group/card w-full relative overflow-hidden bg-transparent flex items-center justify-center h-full"
       >
         <CardPattern isHovering={isHovering} randomString={randomString} />
 
         {/* Content Overlay - improves text visibility */}
-        <div className="absolute inset-0 bg-black opacity-50 z-[5]  "></div>
+        <div className="absolute inset-0 bg-black opacity-50 z-[5]"></div>
 
         <div className="relative z-10 flex flex-col items-center justify-center px-6 py-12 w-full max-w-4xl mx-auto">
           {/* Title */}
@@ -79,14 +80,14 @@ export const StringDemo = ({
             className="flex flex-col sm:flex-row gap-6 justify-center"
           >
             <Link href="https://x.com/A7G3N" target="_blank">
-            <button className="px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-lg font-medium text-white transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black">
-              Follow on X
-            </button>
+              <button className="px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-lg font-medium text-white transition-all duration-300 transform hover:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black">
+                Follow on X
+              </button>
             </Link>
             <Link href="https://t.me/A7G3N" target="_blank">
-            <button className="px-8 py-4 bg-transparent border border-blue-500/30 hover:border-blue-500 rounded-lg font-medium text-white transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black">
-              Join Telegram
-            </button>
+              <button className="px-8 py-4 bg-transparent border border-blue-500/30 hover:border-blue-500 rounded-lg font-medium text-white transition-all duration-300 transform hover:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black">
+                Join Telegram
+              </button>
             </Link>
           </motion.div>
         </div>
@@ -95,12 +96,16 @@ export const StringDemo = ({
   )
 }
 
-export function CardPattern({ isHovering, randomString }: { isHovering: boolean; randomString: string }) {
+interface CardPatternProps {
+  isHovering: boolean
+  randomString: string
+}
+
+function CardPattern({ isHovering, randomString }: CardPatternProps) {
   return (
     <div className="pointer-events-none">
-    
-      <motion.div className="absolute inset-0   bg-gradient-to-b from-black via-blue-600/50 to-blue-400/50 opacity-0 group-hover/card:opacity-100 backdrop-blur-xl transition duration-500" />
-      <motion.div className="absolute inset-0  opacity-0 mix-blend-overlay group-hover/card:opacity-50">
+      <motion.div className="absolute inset-0 bg-gradient-to-b from-black via-blue-600/50 to-blue-400/50 opacity-0 group-hover/card:opacity-100 backdrop-blur-xl transition duration-500" />
+      <motion.div className="absolute inset-0 opacity-0 mix-blend-overlay group-hover/card:opacity-50">
         <p className="absolute inset-x-0 text-lg h-full break-words whitespace-pre-wrap text-white font-mono font-bold transition duration-500">
           {randomString}
         </p>
