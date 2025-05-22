@@ -12,7 +12,7 @@ export const StringDemo = ({
   className,
 }: StringDemoProps) => {
   const [randomString, setRandomString] = useState("")
-  const [isHovering, setIsHovering] = useState(false)
+ 
 
   useEffect(() => {
     // Generate initial string on mount
@@ -20,14 +20,7 @@ export const StringDemo = ({
     setRandomString(str)
   }, [])
 
-  const handleMouseEnter = () => {
-    setIsHovering(true)
-  }
-
-  const handleMouseLeave = () => {
-    setIsHovering(false)
-  }
-
+  
   const handleMouseMove = () => {
     // Generate new string on every mouse movement
     const str = generateRandomString(3000)
@@ -37,8 +30,7 @@ export const StringDemo = ({
   return (
     <div className={cn("bg-transparent flex items-center justify-center w-full h-full relative", className)}>
       <div
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+     
         onMouseMove={handleMouseMove}
         className="group/card w-full relative overflow-hidden bg-transparent flex items-center justify-center h-full"
       >
