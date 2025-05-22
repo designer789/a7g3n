@@ -42,7 +42,7 @@ export const StringDemo = ({
         onMouseMove={handleMouseMove}
         className="group/card w-full relative overflow-hidden bg-transparent flex items-center justify-center h-full"
       >
-        <CardPattern isHovering={isHovering} randomString={randomString} />
+        <CardPattern randomString={randomString} />
 
         {/* Content Overlay - improves text visibility */}
         <div className="absolute inset-0 bg-black opacity-50 z-[5]"></div>
@@ -97,11 +97,10 @@ export const StringDemo = ({
 }
 
 interface CardPatternProps {
-  isHovering: boolean
   randomString: string
 }
 
-function CardPattern({ isHovering, randomString }: CardPatternProps) {
+function CardPattern({ randomString }: CardPatternProps) {
   return (
     <div className="pointer-events-none">
       <motion.div className="absolute inset-0 bg-gradient-to-b from-black via-blue-600/50 to-blue-400/50 opacity-0 group-hover/card:opacity-100 backdrop-blur-xl transition duration-500" />

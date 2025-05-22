@@ -21,7 +21,6 @@ interface IconProps extends React.SVGProps<SVGSVGElement> {
 }
 
 export const EvervaultCard = ({
-  text,
   className,
   centerIcon,
 }: EvervaultCardProps) => {
@@ -31,7 +30,7 @@ export const EvervaultCard = ({
   const [randomString, setRandomString] = useState("")
 
   useEffect(() => {
-    const str = generateRandomString(1500)
+    const str = generateRandomString(2000)
     setRandomString(str)
   }, [])
 
@@ -40,7 +39,7 @@ export const EvervaultCard = ({
     mouseX.set(clientX - left)
     mouseY.set(clientY - top)
 
-    const str = generateRandomString(1500)
+    const str = generateRandomString(2000)
     setRandomString(str)
   }
 
